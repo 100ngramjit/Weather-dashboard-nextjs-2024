@@ -8,7 +8,7 @@ import { useWeatherData } from "./store";
 
 export const GlobalStore = () => {
   const initUserState = useRef(false);
-  const [forecast, setForecast] = useState({});
+  const [forecast, setForecast] = useState({} as { weather: [] });
   const [geoCodedList, setGeoCodedList] = useState(defaultStates);
   const [inputValue, setInputValue] = useState("");
 
@@ -16,15 +16,18 @@ export const GlobalStore = () => {
     24.829588, 92.797148,
   ]);
 
-  const [airQuality, setAirQuality] = useState({});
+  const [airQuality, setAirQuality] = useState(
+    {} as { list: { main: { aqi: number } }[] }
+  );
   const [fiveDayForecast, setFiveDayForecast] = useState({});
   const [uvIndex, seUvIndex] = useState({});
 
   const fetchForecast = async (lat: number, lon: number) => {
     try {
-      const res = await axios.get(`api/current-weather?lat=${lat}&lon=${lon}`);
+      const res = await axios.get(`api/currentweather?lat=${lat}&lon=${lon}`);
 
       setForecast(res.data);
+      console.log(res.data);
     } catch (error) {
       console.log(
         "Error fetching forecast data: ",
@@ -36,7 +39,7 @@ export const GlobalStore = () => {
   // Air Quality
   const fetchAirQuality = async (lat: number, lon: number) => {
     try {
-      const res = await axios.get(`api/air-quality?lat=${lat}&lon=${lon}`);
+      const res = await axios.get(`api/airquality?lat=${lat}&lon=${lon}`);
       setAirQuality(res.data);
     } catch (error) {
       console.log(
@@ -49,9 +52,7 @@ export const GlobalStore = () => {
   // five day forecast
   const fetchFiveDayForecast = async (lat: number, lon: number) => {
     try {
-      const res = await axios.get(
-        `api/five-day-forecast?lat=${lat}&lon=${lon}`
-      );
+      const res = await axios.get(`api/fivedayforecast?lat=${lat}&lon=${lon}`);
 
       setFiveDayForecast(res.data);
     } catch (error) {
@@ -117,8 +118,6 @@ export const GlobalStore = () => {
     fetchAirQuality(activeCityCoords[0], activeCityCoords[1]);
     fetchFiveDayForecast(activeCityCoords[0], activeCityCoords[1]);
     fetchUvIndex(activeCityCoords[0], activeCityCoords[1]);
-  }, [activeCityCoords]);
-  useEffect(() => {
     if (!initUserState.current) {
       useWeatherData.setState({
         forecast,
@@ -132,7 +131,23 @@ export const GlobalStore = () => {
       });
     }
     initUserState.current = true;
-  }, []);
+  }, [activeCityCoords]);
+  // useEffect(() => {
+  //   if (!initUserState.current) {
+  //     useWeatherData.setState({
+  //       forecast,
+  //       airQuality,
+  //       fiveDayForecast,
+  //       uvIndex,
+  //       geoCodedList,
+  //       inputValue,
+  //       handleInput,
+  //       setActiveCityCoords,
+  //     });
+  //   }
+  //   initUserState.current = true;
+  //   console.log(forecast, airQuality, fiveDayForecast, uvIndex, geoCodedList);
+  // }, []);
 
   return <></>;
 };

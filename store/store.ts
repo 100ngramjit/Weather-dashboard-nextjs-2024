@@ -1,12 +1,29 @@
 import { create } from "zustand";
 
-export const useWeatherData = create()(() => ({
-  forecast: undefined,
-  airQuality: undefined,
-  fiveDayForecast: undefined,
-  uvIndex: undefined,
-  geoCodedList: undefined,
-  inputValue: undefined,
+interface weatherData {
+  forecast: any;
+  airQuality: { list: { main: { aqi: number } }[] };
+  fiveDayForecast: any;
+  uvIndex: any;
+  geoCodedList: any;
+  inputValue: string;
+  handleInput: (e: {
+    target: {
+      value: React.SetStateAction<string>;
+    };
+  }) => void;
+  setActiveCityCoords: React.Dispatch<React.SetStateAction<number[]>>;
+}
+
+export const useWeatherData = create<weatherData>()(() => ({
+  forecast: {},
+  airQuality: {
+    list: [],
+  },
+  fiveDayForecast: {},
+  uvIndex: {},
+  geoCodedList: [],
+  inputValue: "",
   handleInput: () => {},
   setActiveCityCoords: () => {},
 }));
