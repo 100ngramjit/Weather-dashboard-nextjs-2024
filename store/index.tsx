@@ -6,7 +6,6 @@ import defaultStates from "../utils/defaultStates";
 import { debounce } from "lodash";
 import { useWeatherData } from "./store";
 
-let apiKey = process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY;
 export const GlobalStore = () => {
   const initUserState = useRef(false);
   const [forecast, setForecast] = useState({});
@@ -23,9 +22,7 @@ export const GlobalStore = () => {
 
   const fetchForecast = async (lat: number, lon: number) => {
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-
-      const res = await axios.get(url);
+      const res = await axios.get(`api/current-weather?lat=${lat}&lon=${lon}`);
 
       setForecast(res.data);
     } catch (error) {
@@ -39,9 +36,7 @@ export const GlobalStore = () => {
   // Air Quality
   const fetchAirQuality = async (lat: number, lon: number) => {
     try {
-      const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-
-      const res = await axios.get(url);
+      const res = await axios.get(`api/air-quality?lat=${lat}&lon=${lon}`);
       setAirQuality(res.data);
     } catch (error) {
       console.log(
@@ -54,9 +49,9 @@ export const GlobalStore = () => {
   // five day forecast
   const fetchFiveDayForecast = async (lat: number, lon: number) => {
     try {
-      const dailyUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-
-      const res = await axios.get(dailyUrl);
+      const res = await axios.get(
+        `api/five-day-forecast?lat=${lat}&lon=${lon}`
+      );
 
       setFiveDayForecast(res.data);
     } catch (error) {
@@ -70,14 +65,7 @@ export const GlobalStore = () => {
   //geocoded list
   const fetchGeoCodedList = async (search: any) => {
     try {
-      const searchParams = search.nextUrl.searchParams;
-
-      const lat = searchParams.get("lat");
-      const lon = searchParams.get("lon");
-
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,uv_index_clear_sky_max&timezone=auto&forecast_days=1`;
-
-      const res = await axios.get(url);
+      const res = await axios.get(`/api/geo?search=${search}`);
 
       setGeoCodedList(res.data);
     } catch (error) {
