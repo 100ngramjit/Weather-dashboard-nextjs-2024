@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { ABeeZee } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./Providers/ThemeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const aBeeZee = ABeeZee({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Weather Dashboard",
@@ -17,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={aBeeZee.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

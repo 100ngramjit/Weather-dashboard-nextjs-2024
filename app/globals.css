@@ -123,10 +123,6 @@ footer:hover .footer-text > img {
   .search-btn button {
     width: 100%;
   }
-
-  .source-code-btn {
-    order: -1;
-  }
 }
 
 @media screen and (max-width: 1010px) {
