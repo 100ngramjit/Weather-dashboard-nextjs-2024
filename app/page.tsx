@@ -3,7 +3,6 @@ import AirPollution from "./Components/AirPollution";
 import DailyForecast from "./Components/DailyForecast";
 import FeelsLike from "./Components/FeelsLike";
 import Humidity from "./Components/Humidity";
-import Mapbox from "./Components/Mapbox";
 import Navbar from "./Components/Navbar";
 import Population from "./Components/Population";
 import Pressure from "./Components/Pressure";
@@ -15,23 +14,21 @@ import Wind from "./Components/Wind";
 import defaultStates from "./utils/defaultStates";
 import FiveDayForecast from "./Components/FiveDayForecast";
 import { useGlobalContextUpdate } from "./context/globalContext";
-import { GlobalStore } from "./store";
+import dynamic from "next/dynamic";
 
+const Mapbox = dynamic(() => import("./Components/Mapbox"), {
+  loading: () => <p>loading...</p>,
+  ssr: false,
+});
 export default function Home() {
   const { setActiveCityCoords } = useGlobalContextUpdate();
 
   const getClickedCityCords = (lat: number, lon: number) => {
     setActiveCityCoords([lat, lon]);
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
 
   return (
     <main className="mx-[1rem] lg:mx-[2rem] xl:mx-[6rem] 2xl:mx-[16rem] m-auto ">
-      <GlobalStore />
       <Navbar />
       <div className="pb-4 flex flex-col gap-4 md:flex-row bg-none	">
         <div className="flex flex-col gap-4 w-full min-w-[18rem] md:w-[35rem]">

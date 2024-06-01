@@ -1,3 +1,4 @@
+"use client";
 const defaultStates = [
   {
     name: "Madrid",
