@@ -1,9 +1,8 @@
 "use client";
-import { useRouter } from "next/navigation";
 import React from "react";
 
-import ThemeDropdown from "./ThemeDropdown/ThemeDropdown";
-import SearchDialog from "./SearchDialog/SearchDialog";
+import ThemeDropdown from "./ThemeDropdown";
+import SearchDialog from "./SearchDialog";
 
 function Navbar() {
   return (
