@@ -49,6 +49,8 @@ function Temperature() {
 
   const getWeatherBg = () => {
     switch (weatherMain) {
+      case "Thunderstorm":
+        return "https://64.media.tumblr.com/a143f71cf31c64c84e4d8d301533df02/a595483d4753ef40-14/s250x400/ed1de81514e058da31de7dfdb8c4cec62e0c481c.gif";
       case "Drizzle":
         return "https://64.media.tumblr.com/530a463537556e669f1adc41cd7fa879/ef0696a53c543835-60/s500x750/e237d9d38d5a24370fc5eecfb595c6ffa55530e8.gif";
       case "Rain":
@@ -60,7 +62,7 @@ function Temperature() {
       case "Clouds":
         return "https://64.media.tumblr.com/f76841b92642860a49b6325a326c37a8/f442cbc940c9ec0f-06/s500x750/c3fef024a762b82e4f34c530c4e03af5f7ce1f42.gif";
       default:
-        return "https://64.media.tumblr.com/091e944e6e108bc0288943a91446f772/9be108972fd8c6dc-02/s500x750/d1843c36fb34233ca53f308e9a0790a2566bf819.gif";
+        return "";
     }
   };
   const weatherBg = getWeatherBg();
@@ -81,14 +83,20 @@ function Temperature() {
     <div
       className={`pt-6 pb-5 px-4 border rounded-lg flex flex-col 
         justify-between dark:shadow-slate-800 shadow-2xl text-grey-800 ${
-          ["Drizzle", "Snow", "Clear", "Clouds"].includes(weatherMain)
+          ["Drizzle", "Snow", "Clear", "Clouds", "Thunderstorm"].includes(
+            weatherMain
+          )
             ? "text-white"
             : ""
         } ${weatherMain === "Rain" ? "dark:text-black" : ""}`}
-      style={{
-        backgroundImage: `url(${weatherBg})`,
-        backgroundSize: "cover",
-      }}
+      style={
+        weatherBg
+          ? {
+              backgroundImage: `url(${weatherBg})`,
+              backgroundSize: "cover",
+            }
+          : {}
+      }
     >
       <p className="flex justify-between items-center ">
         <span className="font-medium">{localTime}</span>
