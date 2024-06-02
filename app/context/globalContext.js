@@ -13,9 +13,9 @@ export const GlobalContextProvider = ({ children }) => {
   const [geoCodedList, setGeoCodedList] = useState(defaultStates);
   const [inputValue, setInputValue] = useState("");
 
-  const [activeCityCoords, setActiveCityCoords] = useState([
-    24.829588, 92.797148,
-  ]);
+  const [activeCityCoords, setActiveCityCoords] = useState(
+    JSON.parse(localStorage.getItem("coords")) || [51.5074, 0.1278]
+  );
 
   const [airQuality, setAirQuality] = useState({});
   const [fiveDayForecast, setFiveDayForecast] = useState({});
@@ -103,7 +103,22 @@ export const GlobalContextProvider = ({ children }) => {
     fetchFiveDayForecast(activeCityCoords[0], activeCityCoords[1]);
     fetchUvIndex(activeCityCoords[0], activeCityCoords[1]);
   }, [activeCityCoords]);
-
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setActiveCityCoords([
+          position.coords.latitude,
+          position.coords.longitude,
+        ]);
+        localStorage.setItem(
+          "coords",
+          JSON.stringify([position.coords.latitude, position.coords.longitude])
+        );
+      });
+    } else {
+      console.log("Geolocation is not available in your browser.");
+    }
+  }, []);
   return (
     <GlobalContext.Provider
       value={{
