@@ -11,10 +11,8 @@ import {
 } from "@/app/utils/Icons";
 import { kelvinToCelsius } from "@/app/utils/misc";
 import moment from "moment";
-import { useTheme } from "next-themes";
 
 function Temperature() {
-  const { theme } = useTheme();
   const { forecast } = useGlobalContext();
 
   const { main, timezone, name, weather } = forecast;

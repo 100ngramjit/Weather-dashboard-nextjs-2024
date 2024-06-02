@@ -41,10 +41,14 @@ function Mapbox() {
   return (
     <MapContainer
       center={[activeCityCords.lat, activeCityCords.lon]}
-      zoom={13}
+      zoom={20}
       scrollWheelZoom={true}
-      className="rounded-lg m-4"
-      style={{ height: "calc(100% - 2rem)", width: "calc(100% - 2rem)" }}
+      className="rounded-lg m-4 z-1"
+      style={{
+        height: "calc(100% - 2rem)",
+        width: "calc(100% - 2rem)",
+        zIndex: 0,
+      }}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
