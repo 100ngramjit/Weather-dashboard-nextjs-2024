@@ -49,6 +49,10 @@ function Temperature() {
 
   const getWeatherBg = () => {
     switch (weatherMain) {
+      case "Mist":
+        return "https://64.media.tumblr.com/41df0017b396abc60d77d1ff10150117/f68ba84efc246391-8c/s500x750/93e1a93b3d27f0e4b7d7a4bff1be8aafdcba832b.gif";
+      case "Haze":
+        return "https://64.media.tumblr.com/67e215ad5200bd6fa5fd66684be4b089/8893455ed3956dea-51/s250x400/2523763b816a1917c1533f41a729c073b3c2534f.gif";
       case "Thunderstorm":
         return "https://64.media.tumblr.com/a143f71cf31c64c84e4d8d301533df02/a595483d4753ef40-14/s250x400/ed1de81514e058da31de7dfdb8c4cec62e0c481c.gif";
       case "Drizzle":
@@ -83,9 +87,15 @@ function Temperature() {
     <div
       className={`pt-6 pb-5 px-4 border rounded-lg flex flex-col 
         justify-between dark:shadow-slate-800 shadow-2xl text-grey-800 ${
-          ["Drizzle", "Snow", "Clear", "Clouds", "Thunderstorm"].includes(
-            weatherMain
-          )
+          [
+            "Drizzle",
+            "Snow",
+            "Clear",
+            "Clouds",
+            "Thunderstorm",
+            "Mist",
+            "Haze",
+          ].includes(weatherMain)
             ? "text-white"
             : ""
         } ${weatherMain === "Rain" ? "dark:text-black" : ""}`}
