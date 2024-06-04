@@ -49,6 +49,8 @@ function Temperature() {
 
   const getWeatherBg = () => {
     switch (weatherMain) {
+      case "Smoke":
+        return "https://j.gifs.com/9QR6qz.gif";
       case "Mist":
         return "https://64.media.tumblr.com/41df0017b396abc60d77d1ff10150117/f68ba84efc246391-8c/s500x750/93e1a93b3d27f0e4b7d7a4bff1be8aafdcba832b.gif";
       case "Haze":
@@ -95,6 +97,7 @@ function Temperature() {
             "Thunderstorm",
             "Mist",
             "Haze",
+            "Smoke",
           ].includes(weatherMain)
             ? "text-white"
             : ""
