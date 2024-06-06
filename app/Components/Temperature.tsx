@@ -49,6 +49,8 @@ function Temperature() {
 
   const getWeatherBg = () => {
     switch (weatherMain) {
+      case "Dust":
+        return "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGZtNmE3NzV4b2plMGdqZXA2d2tmejcwdnNvbmc4bTNrMHV5ZG1nYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/elV7dTuWPRigd62Oe4/giphy.gif";
       case "Smoke":
         return "https://j.gifs.com/9QR6qz.gif";
       case "Mist":
