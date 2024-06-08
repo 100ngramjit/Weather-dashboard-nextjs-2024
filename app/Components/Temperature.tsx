@@ -14,6 +14,9 @@ import moment from "moment";
 
 function Temperature() {
   const { forecast } = useGlobalContext();
+  const { fiveDayForecast } = useGlobalContext();
+
+  const { list } = fiveDayForecast;
 
   const { main, timezone, name, weather } = forecast;
 
@@ -22,8 +25,8 @@ function Temperature() {
   }
 
   const temp = kelvinToCelsius(main?.temp);
-  const minTemp = kelvinToCelsius(main?.temp_min);
-  const maxTemp = kelvinToCelsius(main?.temp_max);
+  const minTemp = kelvinToCelsius(list[0]?.main?.temp_min);
+  const maxTemp = kelvinToCelsius(list[0]?.main?.temp_max);
 
   // State
   const [localTime, setLocalTime] = useState<string>("");
