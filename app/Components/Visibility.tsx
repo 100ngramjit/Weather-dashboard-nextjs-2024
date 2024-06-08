@@ -25,13 +25,13 @@ function Visibility() {
   return (
     <div className="pt-6 pb-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-8 dark:shadow-slate-800 dark:hover:bg-slate-900 shadow-2xl ">
       <div className="top">
-        <h2 className="flex items-center gap-2 font-medium text-lg ">
+        <h2 className="flex items-center gap-2 font-medium text-md ">
           {eye} Visibility
         </h2>
         <p className="pt-4 text-2xl">{Math.round(visibility / 1000)} km</p>
       </div>
 
-      <p className="text-sm">{getVisibilityDescription(visibility)}.</p>
+      <p className="text-xs">{getVisibilityDescription(visibility)}.</p>
     </div>
   );
 }

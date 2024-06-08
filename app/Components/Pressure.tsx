@@ -33,13 +33,13 @@ function Pressure() {
   return (
     <div className="pt-6 pb-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-8 dark:shadow-slate-800 dark:hover:bg-slate-900 shadow-2xl ">
       <div className="top">
-        <h2 className="flex items-center gap-2 font-medium text-lg ">
+        <h2 className="flex items-center gap-2 font-medium text-md ">
           {gauge} Pressure
         </h2>
         <p className="pt-4 text-2xl">{pressure} hPa</p>
       </div>
 
-      <p className="text-sm">{getPressureDescription(pressure)}.</p>
+      <p className="text-xs">{getPressureDescription(pressure)}.</p>
     </div>
   );
 }

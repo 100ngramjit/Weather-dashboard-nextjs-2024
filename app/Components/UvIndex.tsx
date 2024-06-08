@@ -57,13 +57,13 @@ function UvIndex() {
   return (
     <div className="pt-6 pb-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-5 dark:shadow-slate-800 dark:hover:bg-slate-900 shadow-2xl ">
       <div className="top">
-        <h2 className="flex items-center gap-2 font-medium text-lg">
+        <h2 className="flex items-center gap-2 font-medium text-md">
           {sun} Uv Index
         </h2>
         <div className="pt-4 flex flex-col gap-1">
           <p className="text-2xl">
             {uvIndexMax}
-            <span className="text-sm">
+            <span className="text-xs">
               ({uvIndexCategory(uvIndexMax).text})
             </span>
           </p>
@@ -76,7 +76,7 @@ function UvIndex() {
         </div>
       </div>
 
-      <p className="text-sm">{uvIndexCategory(uvIndexMax).protection} </p>
+      <p className="text-xs">{uvIndexCategory(uvIndexMax).protection} </p>
     </div>
   );
 }

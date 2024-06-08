@@ -16,16 +16,12 @@ function Population() {
   return (
     <div className="pt-6 pb-5 px-4 h-[12rem] overflow-auto border rounded-lg flex flex-col justify-between dark:shadow-slate-800 dark:hover:bg-slate-900 shadow-2xl">
       <div className="top">
-        <h2 className="flex items-center gap-2 font-medium text-lg md:text-xl">
-          {people} <span>Population</span>
+        <h2 className="flex items-center gap-2 font-medium text-md ">
+          {people} Population
         </h2>
-        <p className="pt-4 text-3xl md:text-4xl font-bold">
-          {formatNumber(city.population)}
-        </p>
+        <p className="pt-4 text-2xl">{formatNumber(city.population)}</p>
       </div>
-      <p className="text-sm md:text-base">
-        Latest UN population data for {city.name}.
-      </p>
+      <p className="text-xs">Latest UN population data for {city.name}.</p>
     </div>
   );
 }

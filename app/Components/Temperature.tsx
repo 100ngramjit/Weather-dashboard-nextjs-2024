@@ -125,7 +125,7 @@ function Temperature() {
       <div>
         <div>
           <span>{getIcon()}</span>
-          <p className="pt-2 capitalize text-lg font-medium">{description}</p>
+          <p className="pt-2 capitalize text-md font-medium">{description}</p>
         </div>
         <p className="flex items-center gap-2">
           <span>High: {maxTemp}°</span>

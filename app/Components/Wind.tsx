@@ -20,7 +20,7 @@ function Wind() {
       className="pt-6 pb-5 px-4 h-[12rem] border rounded-lg flex 
     flex-col gap-3 dark:shadow-slate-800 dark:hover:bg-slate-900 shadow-2xl "
     >
-      <h2 className="flex items-center gap-2 font-medium text-lg ">
+      <h2 className="flex items-center gap-2 font-medium text-md ">
         {wind} Wind
       </h2>
 

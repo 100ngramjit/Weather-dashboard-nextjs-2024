@@ -54,7 +54,7 @@ function FiveDayForecast() {
         justify-between dark:shadow-slate-800 dark:hover:bg-slate-900 shadow-2xl "
     >
       <div>
-        <h2 className="flex items-center gap-2 font-medium text-lg ">
+        <h2 className="flex items-center gap-2 font-medium text-md ">
           {calender} 5-Day Forecast for {city.name}
         </h2>
 
@@ -66,7 +66,7 @@ function FiveDayForecast() {
                 className="daily-forevast py-4 flex flex-col justify-evenly border-b-2"
               >
                 <p className="text-xl min-w-[3.5rem]">{day.day}</p>
-                <p className="text-sm flex justify-between">
+                <p className="text-xs flex justify-between">
                   <span>(low)</span>
                   <span>(high)</span>
                 </p>
