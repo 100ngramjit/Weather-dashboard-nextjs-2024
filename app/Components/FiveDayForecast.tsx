@@ -1,7 +1,11 @@
 "use client";
 import { useGlobalContext } from "@/app/context/globalContext";
 import { calender } from "@/app/utils/Icons";
-import { kelvinToCelsius, unixToDay } from "@/app/utils/misc";
+import {
+  kelvinToCelsius,
+  processDailyWeatherData,
+  unixToDay,
+} from "@/app/utils/misc";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 
@@ -14,38 +18,11 @@ function FiveDayForecast() {
     return <Skeleton className="h-[12rem] w-full" />;
   }
 
-  const processData = (
-    dailyData: {
-      main: { temp_min: number; temp_max: number };
-      dt: number;
-    }[]
-  ) => {
-    let minTemp = Number.MAX_VALUE;
-    let maxTemp = Number.MIN_VALUE;
-
-    dailyData.forEach(
-      (day: { main: { temp_min: number; temp_max: number }; dt: number }) => {
-        if (day.main.temp_min < minTemp) {
-          minTemp = day.main.temp_min;
-        }
-        if (day.main.temp_max > maxTemp) {
-          maxTemp = day.main.temp_max;
-        }
-      }
-    );
-
-    return {
-      day: unixToDay(dailyData[0].dt),
-      minTemp: kelvinToCelsius(minTemp),
-      maxTemp: kelvinToCelsius(maxTemp),
-    };
-  };
-
   const dailyForecasts = [];
 
   for (let i = 0; i < 40; i += 8) {
     const dailyData = list.slice(i, i + 5);
-    dailyForecasts.push(processData(dailyData));
+    dailyForecasts.push(processDailyWeatherData(dailyData));
   }
 
   return (

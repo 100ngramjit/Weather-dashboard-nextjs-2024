@@ -5,16 +5,20 @@ import {
   clearSky,
   cloudy,
   drizzleIcon,
+  dust,
+  haze,
+  mist,
   navigation,
   rain,
+  smoke,
   snow,
+  thunder,
 } from "@/app/utils/Icons";
-import { kelvinToCelsius } from "@/app/utils/misc";
+import { kelvinToCelsius, processDailyWeatherData } from "@/app/utils/misc";
 import moment from "moment";
 
 function Temperature() {
-  const { forecast } = useGlobalContext();
-  const { fiveDayForecast } = useGlobalContext();
+  const { forecast, fiveDayForecast } = useGlobalContext();
 
   const { list } = fiveDayForecast;
 
@@ -24,10 +28,11 @@ function Temperature() {
     return <div>Loading...</div>;
   }
 
-  const temp = kelvinToCelsius(main?.temp);
-  const minTemp = kelvinToCelsius(list[0]?.main?.temp_min);
-  const maxTemp = kelvinToCelsius(list[0]?.main?.temp_max);
+  const dailyForecasts = [];
+  const dailyData = list.slice(0, 5);
+  dailyForecasts.push(processDailyWeatherData(dailyData));
 
+  const temp = kelvinToCelsius(main?.temp);
   // State
   const [localTime, setLocalTime] = useState<string>("");
 
@@ -39,10 +44,20 @@ function Temperature() {
         return drizzleIcon;
       case "Rain":
         return rain;
+      case "Haze":
+        return haze;
+      case "Smoke":
+        return smoke;
+      case "Thunderstorm":
+        return thunder;
+      case "Mist":
+        return mist;
       case "Snow":
         return snow;
       case "Clear":
         return clearSky;
+      case "Dust":
+        return dust;
       case "Clouds":
         return cloudy;
       default:
@@ -131,8 +146,8 @@ function Temperature() {
           <p className="pt-2 capitalize text-md font-medium">{description}</p>
         </div>
         <p className="flex items-center gap-2">
-          <span>High: {maxTemp}°</span>
-          <span>Low: {minTemp}°</span>
+          <span>Low: {dailyForecasts[0]?.minTemp}°</span>
+          <span>High: {dailyForecasts[0]?.maxTemp}°</span>
         </p>
       </div>
     </div>

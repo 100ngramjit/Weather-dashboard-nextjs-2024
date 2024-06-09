@@ -68,3 +68,30 @@ export const airQulaityIndexText = [
     description: "very poor",
   },
 ];
+
+export const processDailyWeatherData = (
+  dailyData: {
+    main: { temp_min: number; temp_max: number };
+    dt: number;
+  }[]
+) => {
+  let minTemp = Number.MAX_VALUE;
+  let maxTemp = Number.MIN_VALUE;
+
+  dailyData.forEach(
+    (day: { main: { temp_min: number; temp_max: number }; dt: number }) => {
+      if (day.main.temp_min < minTemp) {
+        minTemp = day.main.temp_min;
+      }
+      if (day.main.temp_max > maxTemp) {
+        maxTemp = day.main.temp_max;
+      }
+    }
+  );
+
+  return {
+    day: unixToDay(dailyData[0].dt),
+    minTemp: kelvinToCelsius(minTemp),
+    maxTemp: kelvinToCelsius(maxTemp),
+  };
+};
