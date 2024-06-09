@@ -146,8 +146,8 @@ function Temperature() {
           <p className="pt-2 capitalize text-md font-medium">{description}</p>
         </div>
         <p className="flex items-center gap-2">
-          <span>Low: {dailyForecasts[0]?.minTemp}°</span>
-          <span>High: {dailyForecasts[0]?.maxTemp}°</span>
+          <span>Low: {dailyForecasts ? dailyForecasts[0]?.minTemp : ""}°</span>
+          <span>High: {dailyForecasts ? dailyForecasts[0]?.maxTemp : ""}°</span>
         </p>
       </div>
     </div>

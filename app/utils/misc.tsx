@@ -90,7 +90,7 @@ export const processDailyWeatherData = (
   );
 
   return {
-    day: unixToDay(dailyData[0].dt),
+    day: unixToDay(dailyData && dailyData[0].dt),
     minTemp: kelvinToCelsius(minTemp),
     maxTemp: kelvinToCelsius(maxTemp),
   };
