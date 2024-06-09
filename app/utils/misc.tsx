@@ -78,7 +78,7 @@ export const processDailyWeatherData = (
   let minTemp = Number.MAX_VALUE;
   let maxTemp = Number.MIN_VALUE;
 
-  dailyData.forEach(
+  dailyData?.forEach(
     (day: { main: { temp_min: number; temp_max: number }; dt: number }) => {
       if (day.main.temp_min < minTemp) {
         minTemp = day.main.temp_min;
