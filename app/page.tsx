@@ -28,10 +28,10 @@ export default function Home() {
   };
 
   return (
-    <main className="mx-[3rem] lg:mx-[6rem] xl:mx-[12rem] 2xl:mx-[32rem] m-auto ">
+    <main className="mx-[3rem] lg:mx-[6rem] xl:mx-[15rem] 2xl:mx-[32rem] m-auto  ">
       <Navbar />
       <div className="pb-4 flex flex-col gap-4 md:flex-row">
-        <div className="flex flex-col gap-4 w-full min-w-[18rem] md:w-[35rem]">
+        <div className="flex flex-col gap-4 w-full min-w-[15rem] md:w-[35rem]">
           <Temperature />
           <FiveDayForecast />
         </div>
@@ -55,9 +55,6 @@ export default function Home() {
           <div className="mapbox-con mt-4 flex gap-4">
             <Mapbox />
             <div className="states flex flex-col gap-3 flex-1">
-              <h2 className="flex items-center gap-2 font-medium">
-                Top Large Cities
-              </h2>
               <div className="flex flex-col gap-4">
                 {defaultStates?.map((state, index) => {
                   return (

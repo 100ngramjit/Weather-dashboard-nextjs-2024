@@ -31,10 +31,10 @@ function SearchDialog() {
     return () => document.removeEventListener("keydown", down);
   }, []);
   return (
-    <div className="search-btn">
+    <>
       <Button
         variant="outline"
-        className="border inline-flex items-center min-w-[12rem] justify-center text-xs font-medium hover:dark:bg-[#131313] hover:bg-slate-100  ease-in-out duration-200  dark:shadow-slate-800 shadow-md"
+        className="border inline-flex items-center min-w-[2rem] justify-center text-xs font-medium hover:dark:bg-[#131313] hover:bg-slate-100  ease-in-out duration-200  dark:shadow-slate-800 shadow-md"
         onClick={() => setOpen(true)}
       >
         <p className="text-xs text-muted-foreground">Search City</p>
@@ -89,7 +89,7 @@ function SearchDialog() {
             )}
         </ul>
       </CommandDialog>
-    </div>
+    </>
   );
 }
 
