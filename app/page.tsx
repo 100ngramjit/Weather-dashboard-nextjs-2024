@@ -28,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <main className="mx-[3rem] lg:mx-[6rem] xl:mx-[15rem] 2xl:mx-[32rem] m-auto  ">
+    <main className="mx-[3rem] lg:mx-[6rem] xl:mx-[15rem] 2xl:mx-[25rem] m-auto  ">
       <Navbar />
       <div className="pb-4 flex flex-col gap-4 md:flex-row">
         <div className="flex flex-col gap-4 w-full min-w-[15rem] md:w-[35rem]">
