@@ -4,10 +4,11 @@ import * as React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 
 import { cn } from "@/lib/utils";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 
-const UvProgress = React.forwardRef<
-  React.ElementRef<typeof ProgressPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>
+const UvProgress = forwardRef<
+  ElementRef<typeof ProgressPrimitive.Root>,
+  ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>
 >(({ className, value, ...props }, ref) => (
   <ProgressPrimitive.Root
     ref={ref}

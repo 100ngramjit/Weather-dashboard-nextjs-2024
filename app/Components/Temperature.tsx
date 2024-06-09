@@ -12,9 +12,7 @@ import moment from "moment";
 
 function Temperature() {
   const { forecast, fiveDayForecast } = useGlobalContext();
-
   const { list } = fiveDayForecast;
-
   const { main, timezone, name, weather } = forecast;
 
   if (!forecast || !weather) {

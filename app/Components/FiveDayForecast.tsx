@@ -42,7 +42,7 @@ function FiveDayForecast() {
                 key={i}
                 className="daily-forevast py-4 flex flex-col justify-evenly border-b-2"
               >
-                <p className="text-xl min-w-[3.5rem]">{day.day}</p>
+                <p className="text-md min-w-[3.5rem]">{day.day}</p>
                 <p className="text-xs flex justify-between">
                   <span>(low)</span>
                   <span>(high)</span>

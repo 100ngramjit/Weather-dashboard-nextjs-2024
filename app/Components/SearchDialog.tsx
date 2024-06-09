@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import {
   useGlobalContext,
   useGlobalContextUpdate,
@@ -6,20 +7,19 @@ import {
 import { commandIcon } from "@/app/utils/Icons";
 import { Button } from "@/components/ui/button";
 import { CommandDialog, CommandInput } from "@/components/ui/command";
-import React from "react";
 
 function SearchDialog() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const { geoCodedList, inputValue, handleInput } = useGlobalContext();
   const { setActiveCityCoords } = useGlobalContextUpdate();
 
-  const [hoveredIndex, setHoveredIndex] = React.useState<number>(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number>(0);
 
   const getClickedCoords = (lat: number, lon: number) => {
     setActiveCityCoords([lat, lon]);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "s" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();

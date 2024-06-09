@@ -3,6 +3,7 @@ import { useGlobalContext } from "@/app/context/globalContext";
 import { droplets } from "@/app/utils/Icons";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
+import { getHumidityText } from "../utils/misc";
 
 function Humidity() {
   const { forecast } = useGlobalContext();
@@ -12,16 +13,6 @@ function Humidity() {
   }
 
   const { humidity } = forecast?.main;
-
-  const getHumidityText = (humidity: number) => {
-    if (humidity < 30) return "Dry: May cause skin irritation";
-    if (humidity >= 30 && humidity < 50)
-      return "Comfortable: Ideal for health and comfort";
-    if (humidity >= 50 && humidity < 70)
-      return "Moderate: Sticky, may increase allergens";
-    if (humidity >= 70) return "High: Uncomfortable, mold growth risk";
-    return "Unavailable: Humidity data not available";
-  };
 
   return (
     <div className="pt-6 pb-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-8 dark:shadow-slate-800 dark:hover:bg-slate-900 shadow-2xl ">

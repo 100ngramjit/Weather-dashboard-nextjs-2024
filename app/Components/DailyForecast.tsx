@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useGlobalContext } from "@/app/context/globalContext";
-import { clearSky, cloudy, drizzleIcon, rain, snow } from "@/app/utils/Icons";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Carousel,
@@ -9,7 +8,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import moment from "moment";
-import { kelvinToCelsius } from "@/app/utils/misc";
+import { getIcon, kelvinToCelsius } from "@/app/utils/misc";
 
 function DailyForecast() {
   const { forecast, fiveDayForecast } = useGlobalContext();
@@ -43,23 +42,6 @@ function DailyForecast() {
     );
   }
 
-  const getIcon = () => {
-    switch (weatherMain) {
-      case "Drizzle":
-        return drizzleIcon;
-      case "Rain":
-        return rain;
-      case "Snow":
-        return snow;
-      case "Clear":
-        return clearSky;
-      case "Clouds":
-        return cloudy;
-      default:
-        return clearSky;
-    }
-  };
-
   return (
     <div
       className="pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8
@@ -86,7 +68,7 @@ function DailyForecast() {
                         <p className=" text-gray-300">
                           {moment(forecast.dt_txt).format("LT")}
                         </p>
-                        <p>{getIcon()}</p>
+                        <p>{getIcon(weatherMain)}</p>
                         <p className="mt-4">
                           {kelvinToCelsius(forecast.main.temp)}°C
                         </p>
