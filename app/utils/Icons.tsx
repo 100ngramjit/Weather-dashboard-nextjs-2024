@@ -23,6 +23,7 @@ import {
   CloudFog,
   FlameKindling,
   CloudLightning,
+  Sunrise,
 } from "lucide-react";
 
 export const commandIcon = <Command size={14} />;
@@ -37,6 +38,7 @@ export const thunder = <CloudLightning size={15} />;
 export const cloudy = <Cloudy size={30} />;
 export const navigation = <Navigation size={15} />;
 export const thermo = <ThermometerSun size={15} />;
+export const sunrise = <Sunrise size={15} />;
 export const sunset = <Sunset size={15} />;
 export const haze = <Haze size={15} />;
 export const wind = <Wind size={15} />;

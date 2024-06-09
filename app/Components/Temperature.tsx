@@ -29,7 +29,7 @@ function Temperature() {
   }
 
   const dailyForecasts = [];
-  const dailyData = list.slice(0, 5);
+  const dailyData = list?.slice(0, 5);
   dailyForecasts.push(processDailyWeatherData(dailyData));
 
   const temp = kelvinToCelsius(main?.temp);

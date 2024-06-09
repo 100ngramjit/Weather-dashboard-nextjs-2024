@@ -21,7 +21,7 @@ function FiveDayForecast() {
   const dailyForecasts = [];
 
   for (let i = 0; i < 40; i += 8) {
-    const dailyData = list.slice(i, i + 5);
+    const dailyData = list?.slice(i, i + 5);
     dailyForecasts.push(processDailyWeatherData(dailyData));
   }
 

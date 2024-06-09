@@ -1,6 +1,6 @@
 "use client";
 import { useGlobalContext } from "@/app/context/globalContext";
-import { sunset } from "@/app/utils/Icons";
+import { sunrise, sunset } from "@/app/utils/Icons";
 import { unixToTime } from "@/app/utils/misc";
 import { Skeleton } from "@/components/ui/skeleton";
 import moment from "moment";
@@ -17,15 +17,15 @@ function Sunset() {
   const timezone = forecast?.timezone;
 
   const sunsetTime = unixToTime(times, timezone);
-  const sunrise = unixToTime(forecast?.sys?.sunrise, timezone);
+  const sunriseTime = unixToTime(forecast?.sys?.sunrise, timezone);
 
   return (
     <div className="pt-6 pb-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-8 dark:shadow-slate-800 dark:hover:bg-slate-900 shadow-2xl ">
       <div>
         <h2 className="flex items-center gap-2 font-medium text-md ">
-          {sunset}Sunrise
+          {sunrise}Sunrise
         </h2>
-        <p className="pt-4 text-2xl">{sunrise}</p>
+        <p className="pt-4 text-2xl">{sunriseTime}</p>
         <h2 className="flex items-center gap-2 font-medium pt-2">
           {sunset}Sunset
         </h2>
