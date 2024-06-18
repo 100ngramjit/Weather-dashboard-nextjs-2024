@@ -30,7 +30,7 @@ function AirPollution() {
   return (
     <div
       className="air-pollution pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8
-       dark:shadow-slate-800 dark:hover:bg-slate-900 shadow-2xl  col-span-full sm-2:col-span-2 md:col-span-2 xl:col-span-2"
+       dark:shadow-slate-600 dark:hover:bg-slate-900 shadow-lg col-span-full sm-2:col-span-2 md:col-span-2 xl:col-span-2"
     >
       <h2 className="flex items-center gap-2 font-medium text-md ">
         {thermo}Air Pollution

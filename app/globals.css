@@ -78,12 +78,11 @@ body::-webkit-scrollbar-thumb:hover {
 .progress {
   background: linear-gradient(
     90deg,
-    rgb(25, 44, 213) 0%,
-    rgb(94, 216, 37) 20%,
-    rgb(203, 167, 23) 40%,
-    rgb(228, 101, 23) 60%,
-    rgb(214, 33, 33) 80%,
-    rgb(170, 8, 240) 100%
+    rgb(255, 255, 255) 0%,
+    rgb(217, 197, 118) 25%,
+    rgb(255, 195, 17) 50%,
+    rgb(228, 101, 23) 75%,
+    rgb(214, 33, 33) 100%
   );
 }
 

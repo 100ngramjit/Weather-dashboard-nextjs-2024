@@ -19,7 +19,7 @@ const UvProgress = forwardRef<
     {...props}
   >
     <ProgressPrimitive.Indicator
-      className="h-3 w-3 flex-1 rounded-full bg-primary shadow-lg shadow-white ring-2
+      className="h-3 w-3 flex-1 rounded-full bg-primary shadow-lgshadow-white ring-2
        dark:ring-gray-500"
       style={{ marginLeft: `${value}%` }}
     />
