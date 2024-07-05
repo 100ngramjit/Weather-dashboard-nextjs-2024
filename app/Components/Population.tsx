@@ -19,9 +19,19 @@ function Population() {
         <h2 className="flex items-center gap-2 font-medium text-md ">
           {people} Population
         </h2>
-        <p className="pt-4 text-2xl">{formatNumber(city.population)}</p>
+        {city.population === 0 ? (
+          <p className="text-xs mt-8">
+            no population data available for {city.name}
+          </p>
+        ) : (
+          <>
+            <p className="pt-4 text-2xl">{formatNumber(city.population)}</p>
+            <p className="text-xs mt-8">
+              Latest UN population data for {city.name}
+            </p>
+          </>
+        )}
       </div>
-      <p className="text-xs">Latest UN population data for {city.name}.</p>
     </div>
   );
 }
